@@ -23,7 +23,8 @@ class articles extends React.Component {
   articlesBuilder = () => {
     const articlesRender = [];
     this.state.articlesList.forEach((article) => {
-      articlesRender.push(<Article title={article.title} synopsis={article.synopsis} url={article.url} key={article.title}/>);
+      articlesRender.push(<Article title={article.title} synopsis={article.synopsis} url={article.url}
+        key={article.id} id={article.id} refreshArticles={this.refreshArticles} uid={article.uid}/>);
     });
     return articlesRender;
   }

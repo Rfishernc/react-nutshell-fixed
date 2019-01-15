@@ -14,6 +14,14 @@ class article extends React.Component {
       });
   }
 
+  editArticle = (event) => {
+    event.preventDefault();
+    this.props.editing(this.props.id);
+    document.getElementById('articleName').value = this.props.title;
+    document.getElementById('articleSynopsis').value = this.props.synopsis;
+    document.getElementById('articleUrl').value = this.props.url;
+  }
+
   render() {
     if (this.props.uid === authRequests.getCurrentUid()) {
       return (
@@ -25,6 +33,7 @@ class article extends React.Component {
             <p className="card-text">{this.props.synopsis}</p>
             <a href={this.props.url} className="btn btn-primary">{this.props.url}</a>
             <button type='button' className='btn btn-danger' onClick={this.deleteArticle}>Delete</button>
+            <button type='button' className='btn btn-success' onClick={this.editArticle}>Edit</button>
           </div>
       </div>
       );
